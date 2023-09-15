@@ -17,54 +17,48 @@ while True:
     [5] sair do programa""")
     print("\033[36m==-==" * 10)
     sleep(1)
-    opcao = int(input("\033[32mDigite uma das opções: "))
+    opcao = LeiaInt2(input("\033[32mDigite uma das opções: "))
 
-    if opcao == 1:
-        Loto = 'Mega Sena e pode escolher entre 6 e 15 número por jogo'
-        escolha = 6
-
-    if opcao == 2:
-        Loto = 'Lotofácil e pode escolher entre 15, 16, 17 e 18 número por jogo'
-        escolha = 15
-
-    if opcao == 3:
-        Loto = 'Quina e pode escolher entre 5 e 15 número por jogo'
-        escolha = 5
-
-    if opcao == 4:
-        Loto = 'Lotomania'
-        escolha = 50
-        numero = 50
-
-
-    if opcao == 4:
-        print(f"Voçe escolheu {Loto}. ")
-
-    else:
-        sorteio = input(f"Voçe escolheu {Loto}.\nQual a quantidade de numero por jogo deseja?  ")
-        numero = LeiaIntJogo(sorteio, escolha)
-        
-    jogos = LeiaInt(input("Quantos jogos deseja gerar? "))
-
-    if opcao == 1:
-        jogos = GerarJogo(numero, jogos, Mega)
-        for jogo in jogos:
-            print(jogo)
-
-    if opcao == 2:
-        jogos = GerarJogo(numero, jogos, Lotofacil)
-        for jogo in jogos:
-            print(jogo)
-
-    if opcao == 3:
-        jogos = GerarJogo(numero, jogos, Quina)
-        for jogo in jogos:
-            print(jogo)
-
-    if opcao == 4:
-        jogos = GerarJogo(numero, jogos, Lotomania)
-        for jogo in jogos:
-            print(jogo)
+    print(f"Foi entrado um valor {opcao}")
 
     if opcao == 5:
         break
+
+    if opcao == 1:
+        Loto = 'Mega Sena e pode escolher entre 6 e 15 números por jogo'
+        escolha = 6
+
+    elif opcao == 2:
+        Loto = 'Lotofácil e pode escolher entre 15, 16, 17 e 18 números por jogo'
+        escolha = 15
+
+    elif opcao == 3:
+        Loto = 'Quina e pode escolher entre 5 e 15 números por jogo'
+        escolha = 5
+
+    elif opcao == 4:
+        Loto = 'Lotomania'
+        escolha = 50
+        numero = 50
+    else:
+        print("Opção inválida. Por favor, escolha uma opção válida (1, 2, 3, 4 ou 5).")
+        continue
+
+    if opcao >= 1 and opcao <= 4:
+        sorteio = input(f"Você escolheu {Loto}.\nQual a quantidade de números por jogo deseja?  ")
+        numero = LeiaIntJogo(sorteio, escolha)
+            
+        jogos = LeiaInt(input("Quantos jogos deseja gerar? "))
+
+        if opcao == 1:
+            jogos = GerarJogo(numero, jogos, Mega)
+        elif opcao == 2:
+            jogos = GerarJogo(numero, jogos, Lotofacil)
+        elif opcao == 3:
+            jogos = GerarJogo(numero, jogos, Quina)
+        elif opcao == 4:
+            jogos = GerarJogo(numero, jogos, Lotomania)
+
+        for jogo in jogos:
+            print(jogo)
+    

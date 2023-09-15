@@ -16,6 +16,8 @@ def LeiaIntJogo(msg, escolha):
         n = LeiaIntJogo((input(f"Digite um valor igual ou maior a {num}: ")), num)
     return n
 
+
+# Função para ler os numeros inteiros para escolha de quantidade de jogos a serem gerados
 def LeiaInt(msg):
     try:
         n = int(msg)
@@ -28,8 +30,27 @@ def LeiaInt(msg):
         return 0
     return n
 
+def LeiaInt2(msg):
+    while True:
+        try:
+            n = int(msg)
+
+            if 1 <= n <= 5:
+                return n
+            else:
+                msg = input("Não é uma opção válida! Digite novamente: ")
+
+        except ValueError:
+            print("O valor não corresponde a um número válido.")
+            msg = input("Digite novamente: ")
+        except KeyboardInterrupt:
+            print('\033[31m\nA leitura de dados foi interrompida pelo usuário')
+            return 0
+
+  
 
 
+# Função para gerar os jogos
 def GerarJogo(numero, jogos, Jogo):
    # Lista para armazenar os jogos
     jogos_gerados = []
